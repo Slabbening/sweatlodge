@@ -1,0 +1,3 @@
+title=Sweat Lodge
+author=DabSlab
+orientation=portrait

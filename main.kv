@@ -1,0 +1,132 @@
+
+<CreateAccountWindow>:
+    name: "create"
+    n: n
+    username: username
+    password: passw
+
+    FloatLayout:
+        Label:
+            text:"Name"
+            font_size: self.height / 3
+            pos_hint: {"x":0.35, "top":0.81}
+            size_hint: 0.35, 0.15
+
+        TextInput:
+            pos_hint: {"x":0.15, "top":0.7}
+            size_hint: 0.70, 0.05
+            id: n
+            multiline: False
+            font_size: self.height / 2
+
+        Label:
+            text:"Username"
+            font_size: self.height / 3
+            pos_hint: {"x":0.35, "top":0.66}
+            size_hint: 0.35, 0.15
+
+        TextInput:
+            id: username
+            font_size: self.height / 2
+            multiline: False
+            pos_hint: {"x": 0.15, "top":0.55}
+            size_hint: 0.7, 0.05
+
+        Label:
+            text:"Password"
+            font_size: self.height / 3
+            pos_hint: {"x":0.35, "top":0.51}
+            size_hint: 0.35, 0.15
+
+        TextInput:
+            id: passw
+            font_size: self.height / 2
+            multiline: False
+            password: True
+            pos_hint: {"x": 0.15, "top":0.4}
+            size_hint: 0.7, 0.05
+
+
+        Button:
+            pos_hint:{"x":0.28,"y":0.03}
+            size_hint: 0.455, 0.05
+            font_size: self.height/2
+            text: "Login Screen"
+            on_release:
+                root.manager.transition.direction = "left"
+                root.login()
+
+        Button:
+            color: 0, 1, 0, 1
+            pos_hint:{"x":0.125,"y":0.1}
+            size_hint: 0.75, 0.1
+            font_size: self.height/2
+            text: "Save Account"
+            on_release:
+                root.manager.transition.direction = "left"
+                root.submit()
+
+
+<LoginWindow>:
+    name: "login"
+    username: username
+    password: password
+
+    FloatLayout:
+        Label:
+            text:"Username"
+            font_size: self.height / 3
+            pos_hint: {"x":0.35, "top":0.71}
+            size_hint: 0.35, 0.15
+
+        TextInput:
+            id: username
+            font_size: self.height / 2
+            multiline: False
+            pos_hint: {"x": 0.15, "top":0.6}
+            size_hint: 0.7, 0.05
+
+        Label:
+            text:"Password"
+            font_size: self.height / 3
+            pos_hint: {"x":0.35, "top":0.51}
+            size_hint: 0.35, 0.15
+
+        TextInput:
+            id: password
+            font_size: self.height / 2
+            multiline: False
+            password: True
+            pos_hint: {"x": 0.15, "top":0.4}
+            size_hint: 0.7, 0.05
+
+        Button:
+            color: 0, 1, 0, 1
+            pos_hint:{"x":0.125,"y":0.1}
+            size_hint: 0.75, 0.1
+            font_size: self.height/2
+            text: "Login"
+            on_release:
+                root.manager.transition.direction = "up"
+                root.loginBtn()
+
+        Button:
+            pos_hint:{"x":0.28,"y":0.03}
+            size_hint: 0.455, 0.05
+            font_size: self.height/2
+            text: "Create Account"
+            on_release:
+                root.manager.transition.direction = "right"
+                root.createBtn()
+
+
+<MainWindow>:
+
+    FloatLayout:
+        Button:
+            pos_hint:{"x":0.93, "top": 0.98}
+            size_hint: 0.05,0.05
+            text: "X"
+            on_release:
+                app.root.current = "login"
+                root.manager.transition.direction = "down"
